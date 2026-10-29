@@ -1,0 +1,16 @@
+name: Close stale issues
+on:
+  schedule:
+    - cron: "0 6 * * *"
+permissions:
+  issues: write
+  pull-requests: write
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-message: "Marked stale: no activity for 60 days."
